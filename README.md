@@ -1,55 +1,103 @@
-# Semantic Standards Authority (SSA)
+Semantic Standards Authority (SSA)
+Official Repository of the Semantic Standards Authority
 
-The **Semantic Standards Authority (SSA)** is an independent institutional body responsible for defining, maintaining, and governing semantic standards that enable clarity, interoperability, and structural consistency across digital and organizational systems.
+Overview
+The Semantic Standards Authority (SSA) is an independent, non‑commercial and neutrality‑driven institution responsible for defining, maintaining, and safeguarding semantic standards, semantic clarity, and semantic interoperability across domains, systems, and jurisdictions.
 
-This repository serves as the **primary public source** for SSA documents, including:
+This repository serves as the primary public source for SSA institutional documents, standards, declarations, and technical materials.
 
-- Foundational institutional texts  
-- Governance structure  
-- Standards and semantic frameworks  
-- Public declarations  
-- Website content for **semanticstandards.uk**
+Institutional Documents
+Foundational Documents
+SSA Manifesto — philosophical and normative foundation of the institution
 
----
+SSA Charter — institutional legal framework
 
-## 📘 Mission
+Authority Declarations — binding semantic interpretations and institutional positions
 
-To establish a unified semantic foundation that ensures:
-- Clear meaning across systems  
-- Stable and interoperable structures  
-- Transparent governance  
-- Publicly accessible standards  
+Standards
+SSA publishes semantic standards that define:
 
-SSA operates as a **neutral authority**, providing definitions, frameworks, and semantic rules that can be adopted by institutions, systems, and organizations.
+vocabularies
 
----
+ontologies
 
-## 🏛️ Institutional Documents
+classifiers
 
-This repository will link to the core SSA documents:
+semantic structures
 
-- **Manifesto** — philosophical and structural foundation  
-- **Charter** — institutional definition and operational scope  
-- **Authority Declaration** — formal establishment of SSA as an authority  
-- **Governance** — decision‑making, processes, and institutional structure  
-- **Standards** — semantic rules, definitions, and frameworks  
+interoperability rules
 
-Each document will be maintained in its own dedicated repository.
+All standards are versioned, archived, and publicly accessible.
 
----
+Repository Structure
+Code
+/
+├── CHARTER.md
+├── AUTHORITY_DECLARATION.md
+├── MANIFESTO.md
+├── standards/
+│   ├── README.md
+│   ├── (future standards)
+├── governance/
+│   ├── README.md
+│   ├── procedures/
+│   ├── decisions/
+└── docs/
+    ├── technical-notes/
+    ├── interpretations/
+This structure ensures clarity, stability, and long‑term maintainability of SSA materials.
 
-## 🌐 Website
+Mission
+The SSA exists to:
 
-This repository also contains the source for the public website:
+ensure semantic clarity
 
-**https://semanticstandards.uk**
+prevent ambiguity and semantic drift
 
-The website provides:
-- Public access to SSA documents  
-- Explanations of standards  
-- Institutional announcements  
-- Reference materials  
+maintain authoritative definitions
 
----
+promote interoperability across systems and institutions
 
-## 📂 Repository Structure
+provide neutral semantic governance
+
+publish open, accessible semantic standards
+
+Principles
+The SSA operates according to the following principles:
+
+Neutrality — independent of political, commercial, or ideological influence
+
+Transparency — all documents and decisions are public
+
+Stability — standards are versioned, archived, and preserved
+
+Interoperability — semantic structures must work across domains
+
+Clarity — definitions must be precise, unambiguous, and authoritative
+
+Governance
+The SSA is governed by:
+
+Authority Council — highest decision‑making body
+
+Executive Secretariat — operational and administrative functions
+
+Expert Groups — advisory and technical contributors
+
+All governance actions are documented and published.
+
+Public Access
+All SSA documents are available at:
+
+https://semanticstandards.uk
+
+This repository mirrors the authoritative public versions.
+
+Contact
+Semantic Standards Authority (SSA)  
+128 City Road
+London, EC1V 2NX
+United Kingdom
+
+Website: https://semanticstandards.uk  
+Email: contact@semanticstandards.uk
