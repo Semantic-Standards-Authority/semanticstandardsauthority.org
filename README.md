@@ -101,3 +101,6 @@ United Kingdom
 
 Website: https://semanticstandards.uk  
 Email: contact@semanticstandards.uk
+Official SSA Standard:
+SSA‑S1: Meaning Standard (v1.0)
+DOI: https://doi.org/10.5281/zenodo.20403998
