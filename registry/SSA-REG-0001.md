@@ -144,12 +144,13 @@ Code
 id: S1
 title: Semantic Unit Specification
 version: v1.0
-status: Draft
+status: Approved
 description: Defines the structure of semantic units used across SSA.
-authority_decision: AD-001 (pending)
+authority_decision: AD-001
+created_at: 2026-09-12
+updated_at: 2026-09-12
+semantic_unit: /standards/S1/S1_v1.0.md
 repository_path: /standards/S1/
-11. Versioning Rules
-Major version increments require a new Authority Decision.
 
 Minor version increments may be editorial.
 
