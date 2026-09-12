@@ -99,8 +99,8 @@ Semantic Standards Authority (SSA)
 London, EC1V 2NX
 United Kingdom
 
-Website: https://semanticstandards.uk  
-Email: contact@semanticstandards.uk
+Website: https://www.semanticstandardsauthority.org
+Email: renatas@semanticstandardsauthority.org
 Official SSA Standard:
 SSA‑S1: Meaning Standard (v1.0)
 DOI: https://doi.org/10.5281/zenodo.20403998
