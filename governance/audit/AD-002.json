@@ -1,0 +1,19 @@
+{
+  "id": "AD-002",
+  "type": "AuthorityDecisionAudit",
+  "standard": "S2",
+  "title": "Regulatory Antinomy Semantic Class (RA-1)",
+  "version": "v1.1",
+  "action": "status_update",
+  "previous_status": "Draft",
+  "new_status": "Approved",
+  "decision_reference": "AD-002",
+  "timestamp": "2026-09-12T12:58:00Z",
+  "actor": {
+    "role": "Authority",
+    "entity": "Semantic Standards Authority"
+  },
+  "change_summary": "Standard S2 (RA-1) approved as an official SSA semantic standard under Authority Decision AD-002.",
+  "repository_path": "/standards/RA-1/",
+  "semantic_unit": "/standards/RA-1/RA-1_v1.1.md"
+}
