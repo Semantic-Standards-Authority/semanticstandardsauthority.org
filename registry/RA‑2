@@ -1,1 +1,89 @@
+🟥🖤 REG‑RA‑2‑v0.1 — Execution Determinism Standard
+Standard ID: RA‑2
+Version: 0.1
+Status: Draft
+Category: Execution Determinism
+Authority: Semantic Standards Authority (SSA)
+Dependencies: RA‑1 (Admissibility Standard)
+Registry Path: /REG/RA/RA‑2/  
+Document: /standards/RA‑2.md
 
+1. Standard Summary
+RA‑2 nustato semantinius ir techninius kriterijus, pagal kuriuos vykdymo aplinka laikoma deterministine.
+Standartas apibrėžia:
+
+Deterministic Input Envelope
+
+Deterministic Output Envelope
+
+Execution Path Consistency
+
+Semantic Drift Immunity
+
+Error Determinism
+
+Determinism Evaluation Model
+
+Compliance Requirements
+
+RA‑2 yra branduolinis SSA vykdymo architektūros komponentas, užtikrinantis semantinį stabilumą ir atkuriamumą.
+
+2. Determinism Criteria
+Sistema laikoma deterministine, jeigu:
+
+įvesties apvalkalas yra pilnai apibrėžtas ir stabilus,
+
+išvestis identiška esant identiškai įvesčiai,
+
+vykdymo kelias atkuriamas be alternatyvių šakų,
+
+semantinis dreifas neviršija nustatytų ribų,
+
+klaidos yra deterministinės ir atkuriamos.
+
+3. Evaluation Model
+RA‑2 vertinimo modelis apima:
+
+Input Consistency Test
+
+Path Reproducibility Test
+
+Output Stability Test
+
+Drift Boundary Test
+
+Error Determinism Test
+
+Vertinimo rezultatai turi būti dokumentuojami ir pateikiami registracijos metu.
+
+4. Compliance Requirements
+Sistema atitinka RA‑2, jeigu:
+
+visi testai praeinami be nukrypimų,
+
+dreifo ribos laikomos,
+
+klaidos deterministinės,
+
+vykdymo kelias atkuriamas,
+
+įvesties ir išvesties apvalkalai stabilūs.
+
+5. Registry Metadata
+Registered: 2026‑09‑19
+
+Registrar: SSA
+
+Document Type: Semantic Standard
+
+Format: Markdown (GitHub‑ready)
+
+Versioning: Semantic (major.minor)
+
+Change Log:
+
+v0.1 — Initial Draft (stub + criteria + evaluation model + compliance)
+
+6. Notes
+RA‑2 yra tiesioginė RA‑1 plėtra ir turi būti naudojamas kartu su Admissibility Evaluation Model.
+Standartas yra būtinas semantinei vykdymo atskaitomybei ir deterministiniam AI infrastruktūrų valdymui.
