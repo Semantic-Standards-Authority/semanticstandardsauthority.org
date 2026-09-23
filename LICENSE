@@ -1,36 +1,472 @@
-SSA Proprietary License (SSA‑PL 1.0)
-© Renatas Vaičiūnas Antano
+<!-- Copyright (C) Microsoft Corporation. All rights reserved.
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file. -->
 
-Autorystė  
-Visi dokumentai, standartai, struktūros ir intelektiniai kūriniai, pažymėti SSA ženklu, yra Renato Vaičiūno Antano intelektinė nuosavybė.
+<!DOCTYPE html>
+<html dir="ltr" lang="und">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <!-- for img-src, we are allowing all the images from http:/https: and data: only as other URI schemes-,
+             1. Filesystem: is not being used.
+             2. Mediastream is no longer supported by browser.
+             3. Blob URL is temporary URL that only exist for original page's lifetime and hence not valid for reading view -->
+    <!--
+         for default-src, add the url for translation because if they are not added the translation feature would not be available on iOS.
+    -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
+          frame-src https://youtube.com https://www.youtube.com;
+          default-src https://*.microsoft.com https://api.cognitive.microsofttranslator.com;
+          script-src 'self';
+          connect-src 'self';
+          img-src * data:;
+          form-action 'none';
+          style-src 'unsafe-inline';
+          base-uri 'none'
+          "
+    >
+    <meta property="csp-nonce" content="ad3d126e-72a6-4de3-9319-d50a07ab0540">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <style>
+    :root {
+      --colorBackgroundApp: #ffffffff;
+      --edge-smtc-ctrl-tab-background-horizontal-active: #f0f0f0;
+--mai-smtc-background-ctrl-on-image-hover: #333333;
+--mai-smtc-background-ctrl-on-image-pressed: #333333;
+--mai-smtc-background-ctrl-on-image-rest: #333333;
+--mai-smtc-background-flyout-saturation-blend: #ffffff;
+--mai-smtc-ctrl-choice-base-stroke-width-hover: 1px;
+--mai-smtc-ctrl-choice-base-stroke-width-pressed: 1px;
+--mai-smtc-ctrl-choice-base-stroke-width-rest: 1px;
+--mai-smtc-foreground-ctrl-on-image: #ffffff;
+--mai-smtc-padding-content-xxx-small: 2px;
+--mai-smtc-shadow-ctrl-brand-key: 0px 0px 0px 0px #00000000;
+--mai-smtc-shadow-ctrl-neutral-contour: 0px 0px 0px 0px #00000000;
+--mai-smtc-shadow-ctrl-neutral-inner-shine: 0px 0px 0px 0px #00000000;
+--mai-smtc-shadow-ctrl-neutral-key: 0px 0px 0px 0px #ffffff00;
+--mai-smtc-shadow-flyout-contour: 0px 0px 0px 0px #00000000;
+--smtc-background-card-on-primary-alt-hover: #c4dcff;
+--smtc-background-card-on-primary-alt-pressed: #86b3fc;
+--smtc-background-card-on-primary-alt-rest: #e0edff;
+--smtc-background-card-on-primary-default-rest: #ffffff;
+--smtc-background-ctrl-active-brand-disabled: #0000000f;
+--smtc-background-ctrl-active-brand-hover: #235ccf;
+--smtc-background-ctrl-active-brand-pressed: #2551a8;
+--smtc-background-ctrl-active-brand-rest: #2169eb;
+--smtc-background-ctrl-brand-disabled: #0000000f;
+--smtc-background-ctrl-brand-hover: #235ccf;
+--smtc-background-ctrl-brand-pressed: #2551a8;
+--smtc-background-ctrl-brand-rest: #2169eb;
+--smtc-background-ctrl-neutral-disabled: #0000000f;
+--smtc-background-ctrl-neutral-hover: #0000000a;
+--smtc-background-ctrl-neutral-pressed: #00000014;
+--smtc-background-ctrl-neutral-rest: #ffffffb3;
+--smtc-background-ctrl-outline-disabled: #00000000;
+--smtc-background-ctrl-outline-hover: #00000000;
+--smtc-background-ctrl-outline-pressed: #00000000;
+--smtc-background-ctrl-outline-rest: #00000000;
+--smtc-background-ctrl-shape-safe-neutral-hover: #0000009e;
+--smtc-background-ctrl-shape-safe-neutral-pressed: #0000009e;
+--smtc-background-ctrl-shape-safe-neutral-rest: #0000009e;
+--smtc-background-ctrl-subtle-disabled: #00000000;
+--smtc-background-ctrl-subtle-hover: #0000001f;
+--smtc-background-ctrl-subtle-hover-split: #00000000;
+--smtc-background-ctrl-subtle-pressed: #00000014;
+--smtc-background-ctrl-subtle-rest: #ffffff00;
+--smtc-background-ctrl-subtle-selected-disabled: #00000000;
+--smtc-background-ctrl-subtle-selected-hover: #0000001f;
+--smtc-background-ctrl-subtle-selected-pressed: #00000014;
+--smtc-background-ctrl-subtle-selected-rest: #00000014;
+--smtc-background-flyout-solid: #ffffff;
+--smtc-background-layer-primary-solid: #ffffff;
+--smtc-background-toolbar: #ffffff;
+--smtc-background-window-primary-solid: #ffffff;
+--smtc-corner-circular: 10000px;
+--smtc-corner-ctrl-hover: 4px;
+--smtc-corner-ctrl-lg-hover: 8px;
+--smtc-corner-ctrl-lg-pressed: 8px;
+--smtc-corner-ctrl-lg-rest: 8px;
+--smtc-corner-ctrl-pressed: 4px;
+--smtc-corner-ctrl-rest: 4px;
+--smtc-corner-ctrl-sm-hover: 2px;
+--smtc-corner-ctrl-sm-pressed: 2px;
+--smtc-corner-ctrl-sm-rest: 2px;
+--smtc-corner-flyout-rest: 8px;
+--smtc-ctrl-badge-corner: 4px;
+--smtc-ctrl-badge-padding: 4px;
+--smtc-ctrl-badge-sm-corner: 4px;
+--smtc-ctrl-boolean-selection-hint: true;
+--smtc-ctrl-choice-base-background-disabled: #00000000;
+--smtc-ctrl-choice-base-background-rest: #00000000;
+--smtc-ctrl-choice-base-size: 20px;
+--smtc-ctrl-choice-base-stroke-disabled: #0000001f;
+--smtc-ctrl-choice-base-stroke-hover: #00000038;
+--smtc-ctrl-choice-base-stroke-pressed: #0000004d;
+--smtc-ctrl-choice-base-stroke-rest: #0000002e;
+--smtc-ctrl-choice-radio-corner: 10000px;
+--smtc-ctrl-choice-radio-dot-size-hover: 10px;
+--smtc-ctrl-choice-radio-dot-size-pressed: 10px;
+--smtc-ctrl-choice-radio-dot-size-rest: 10px;
+--smtc-ctrl-focus-inner-stroke: #ffffff;
+--smtc-ctrl-focus-inner-stroke-width: 1px;
+--smtc-ctrl-focus-outer-stroke: #000000;
+--smtc-ctrl-focus-outer-stroke-width: 2px;
+--smtc-ctrl-link-foreground-brand-hover: #2551a8;
+--smtc-ctrl-link-foreground-brand-pressed: #243966;
+--smtc-ctrl-link-foreground-brand-rest: #235ccf;
+--smtc-ctrl-link-foreground-neutral-hover: #000000db;
+--smtc-ctrl-link-foreground-neutral-pressed: #000000db;
+--smtc-ctrl-link-foreground-neutral-rest: #000000db;
+--smtc-ctrl-link-on-page-stroke-width-rest: 1px;
+--smtc-ctrl-list-corner-rest: 4px;
+--smtc-ctrl-progress-background-empty: #0000000a;
+--smtc-ctrl-progress-height-filled: 3px;
+--smtc-ctrl-slider-bar-corner: 10000px;
+--smtc-ctrl-slider-bar-foreground-empty-disabled: #0000000f;
+--smtc-ctrl-slider-bar-foreground-empty-rest: #616161;
+--smtc-ctrl-slider-bar-foreground-filled-disabled: #0000000f;
+--smtc-ctrl-slider-bar-foreground-filled-hover: #235ccf;
+--smtc-ctrl-slider-bar-foreground-filled-pressed: #243966;
+--smtc-ctrl-slider-bar-foreground-filled-rest: #2169eb;
+--smtc-ctrl-slider-bar-height: 3px;
+--smtc-ctrl-slider-sm-thumb-size-rest: 20px;
+--smtc-ctrl-slider-thumb-background-disabled: #00000042;
+--smtc-ctrl-slider-thumb-background-hover: #235ccf;
+--smtc-ctrl-slider-thumb-background-pressed: #243966;
+--smtc-ctrl-slider-thumb-background-rest: #2169eb;
+--smtc-ctrl-slider-thumb-corner: 10000px;
+--smtc-ctrl-slider-thumb-inner-stroke-disabled: #ffffffb3;
+--smtc-ctrl-slider-thumb-inner-stroke-hover: #ffffffb3;
+--smtc-ctrl-slider-thumb-inner-stroke-pressed: #ffffffb3;
+--smtc-ctrl-slider-thumb-inner-stroke-rest: #ffffffb3;
+--smtc-ctrl-slider-thumb-inner-stroke-width-hover: 4px;
+--smtc-ctrl-slider-thumb-inner-stroke-width-pressed: 4px;
+--smtc-ctrl-slider-thumb-inner-stroke-width-rest: 4px;
+--smtc-ctrl-slider-thumb-outer-stroke-rest: #0000002e;
+--smtc-ctrl-slider-thumb-size-hover: 22px;
+--smtc-ctrl-slider-thumb-size-pressed: 18px;
+--smtc-ctrl-slider-thumb-size-rest: 20px;
+--smtc-ctrl-tooltip-shadow-ambient: 0px 0px 2px 0px #0000001f;
+--smtc-ctrl-tooltip-shadow-key: 0px 4px 8px 0px #00000024;
+--smtc-foreground-content-neutral-primary: #000000db;
+--smtc-foreground-content-neutral-secondary: #0000008f;
+--smtc-foreground-ctrl-active-brand-disabled: #00000042;
+--smtc-foreground-ctrl-active-brand-hover: #000000db;
+--smtc-foreground-ctrl-active-brand-pressed: #000000db;
+--smtc-foreground-ctrl-active-brand-rest: #000000db;
+--smtc-foreground-ctrl-brand-disabled: #00000042;
+--smtc-foreground-ctrl-brand-hover: #235ccf;
+--smtc-foreground-ctrl-brand-pressed: #2551a8;
+--smtc-foreground-ctrl-brand-rest: #2169eb;
+--smtc-foreground-ctrl-hint-default: #0000008f;
+--smtc-foreground-ctrl-icon-on-subtle-disabled: #00000042;
+--smtc-foreground-ctrl-icon-on-subtle-hover: #000000db;
+--smtc-foreground-ctrl-icon-on-subtle-pressed: #000000db;
+--smtc-foreground-ctrl-icon-on-subtle-rest: #000000db;
+--smtc-foreground-ctrl-neutral-primary-disabled: #00000042;
+--smtc-foreground-ctrl-neutral-primary-hover: #000000db;
+--smtc-foreground-ctrl-neutral-primary-pressed: #000000db;
+--smtc-foreground-ctrl-neutral-primary-rest: #000000db;
+--smtc-foreground-ctrl-neutral-secondary-disabled: #00000042;
+--smtc-foreground-ctrl-neutral-secondary-rest: #0000008f;
+--smtc-foreground-ctrl-on-active-brand-disabled: #ffffff85;
+--smtc-foreground-ctrl-on-active-brand-hover: #ffffff;
+--smtc-foreground-ctrl-on-active-brand-pressed: #ffffff;
+--smtc-foreground-ctrl-on-active-brand-rest: #ffffff;
+--smtc-foreground-ctrl-on-brand-disabled: #00000042;
+--smtc-foreground-ctrl-on-brand-hover: #ffffff;
+--smtc-foreground-ctrl-on-brand-pressed: #ffffff;
+--smtc-foreground-ctrl-on-brand-rest: #ffffff;
+--smtc-foreground-ctrl-on-outline-disabled: #00000042;
+--smtc-foreground-ctrl-on-outline-hover: #000000db;
+--smtc-foreground-ctrl-on-outline-pressed: #000000db;
+--smtc-foreground-ctrl-on-outline-rest: #000000db;
+--smtc-foreground-ctrl-on-subtle-disabled: #00000042;
+--smtc-foreground-ctrl-on-subtle-hover: #000000db;
+--smtc-foreground-ctrl-on-subtle-pressed: #000000db;
+--smtc-foreground-ctrl-on-subtle-rest: #000000db;
+--smtc-foreground-ctrl-on-transparent-rest: #000000db;
+--smtc-gap-between-content-medium: 16px;
+--smtc-gap-between-content-small: 12px;
+--smtc-gap-between-content-x-small: 8px;
+--smtc-gap-between-content-xx-small: 4px;
+--smtc-gap-between-ctrl-default: 8px;
+--smtc-gap-between-list-item: 0px;
+--smtc-gap-between-text-large: 6px;
+--smtc-gap-inside-ctrl-default: 4px;
+--smtc-gap-inside-ctrl-lg-default: 4px;
+--smtc-gap-inside-ctrl-sm-default: 4px;
+--smtc-gap-inside-ctrl-to-label: 8px;
+--smtc-gap-inside-ctrl-to-secondary-icon: 4px;
+--smtc-material-acrylic-blur: 0px;
+--smtc-material-acrylic-default-color-blend: #00000000;
+--smtc-material-acrylic-default-lum-blend: #00000000;
+--smtc-material-acrylic-default-solid: #ffffff;
+--smtc-null-color: #00000000;
+--smtc-padding-content-align-outdent-icon-on-subtle: 2px;
+--smtc-padding-content-align-outdent-text-on-subtle: 10px;
+--smtc-padding-content-medium: 16px;
+--smtc-padding-content-none: 0px;
+--smtc-padding-content-small: 12px;
+--smtc-padding-content-x-small: 8px;
+--smtc-padding-content-xx-small: 4px;
+--smtc-padding-ctrl-horizontal-default: 8px;
+--smtc-padding-ctrl-horizontal-icon-only: 6px;
+--smtc-padding-ctrl-lg-horizontal-default: 8px;
+--smtc-padding-ctrl-lg-horizontal-icon-only: 8px;
+--smtc-padding-ctrl-lg-text-bottom: 8px;
+--smtc-padding-ctrl-lg-text-top: 8px;
+--smtc-padding-ctrl-sm-horizontal-default: 8px;
+--smtc-padding-ctrl-sm-horizontal-icon-only: 2px;
+--smtc-padding-ctrl-sm-text-bottom: 4px;
+--smtc-padding-ctrl-sm-text-top: 4px;
+--smtc-padding-ctrl-text-bottom: 6px;
+--smtc-padding-ctrl-text-side: 2px;
+--smtc-padding-ctrl-text-top: 6px;
+--smtc-padding-flyout-default: 4px;
+--smtc-shadow-flyout-ambient: 0px 14px 28px 0px #0000001f;
+--smtc-shadow-flyout-key: 0px 0px 8px 0px #00000024;
+--smtc-size-ctrl-default: 32px;
+--smtc-size-ctrl-icon: 20px;
+--smtc-size-ctrl-icon-secondary: 10px;
+--smtc-size-ctrl-lg-default: 40px;
+--smtc-size-ctrl-lg-icon: 20px;
+--smtc-size-ctrl-sm-default: 24px;
+--smtc-size-ctrl-sm-icon: 20px;
+--smtc-status-danger-tint-foreground: #b10e1c;
+--smtc-stroke-ctrl-on-active-brand-disabled: #00000000;
+--smtc-stroke-ctrl-on-active-brand-hover: #00000000;
+--smtc-stroke-ctrl-on-active-brand-pressed: #00000000;
+--smtc-stroke-ctrl-on-active-brand-rest: #00000000;
+--smtc-stroke-ctrl-on-brand-disabled: #00000000;
+--smtc-stroke-ctrl-on-brand-hover: #00000000;
+--smtc-stroke-ctrl-on-brand-pressed: #00000000;
+--smtc-stroke-ctrl-on-brand-rest: #00000000;
+--smtc-stroke-ctrl-on-neutral-rest: #0000002e;
+--smtc-stroke-ctrl-on-outline-disabled: #0000001f;
+--smtc-stroke-ctrl-on-outline-hover: #00000038;
+--smtc-stroke-ctrl-on-outline-pressed: #0000004d;
+--smtc-stroke-ctrl-on-outline-rest: #0000002e;
+--smtc-stroke-ctrl-on-subtle-disabled: #00000000;
+--smtc-stroke-ctrl-on-subtle-hover: #00000000;
+--smtc-stroke-ctrl-on-subtle-pressed: #00000000;
+--smtc-stroke-ctrl-on-subtle-rest: #00000000;
+--smtc-stroke-divider-default: #0000001f;
+--smtc-stroke-divider-strong: #0000005c;
+--smtc-stroke-divider-subtle: #0000000f;
+--smtc-stroke-flyout: #00000000;
+--smtc-stroke-width-ctrl-outline-hover: 1px;
+--smtc-stroke-width-ctrl-outline-pressed: 1px;
+--smtc-stroke-width-ctrl-outline-rest: 1px;
+--smtc-stroke-width-default: 1px;
+--smtc-stroke-width-divider-default: 1px;
+--smtc-stroke-width-divider-strong: 2px;
+--smtc-text-ctrl-button-weight-default: 400;
+--smtc-text-ctrl-weight-default: 400;
+--smtc-text-global-body2-font-size: 16px;
+--smtc-text-global-body2-line-height: 22px;
+--smtc-text-global-body3-font-size: 14px;
+--smtc-text-global-body3-line-height: 20px;
+--smtc-text-global-caption1-font-size: 12px;
+--smtc-text-global-caption1-line-height: 16px;
+--smtc-text-global-caption2-font-size: 10px;
+--smtc-text-global-caption2-line-height: 14px;
+--smtc-text-ramp-item-body-font-size: 14px;
+--smtc-text-ramp-item-body-line-height: 20px;
+--smtc-text-ramp-lg-item-body-font-size: 16px;
+--smtc-text-ramp-lg-item-body-line-height: 22px;
+--smtc-text-ramp-metadata-font-size: 12px;
+--smtc-text-ramp-metadata-line-height: 16px;
+--smtc-text-ramp-sm-item-body-font-size: 12px;
+--smtc-text-ramp-sm-item-body-line-height: 16px;
+--smtc-text-style-default-header-font-family: 'Segoe UI Variable Display', 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+--smtc-text-style-default-header-letter-spacing: 0px;
+--smtc-text-style-default-header-weight: 600;
+--smtc-text-style-default-regular-font-family: 'Segoe UI Variable Display', 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue', sans-serif;
+--smtc-text-style-default-regular-letter-spacing: 0px;
+--smtc-text-style-default-regular-weight: 400;
+    }
 
-Leidžiama
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --colorBackgroundApp: #292929ff;
+        --edge-smtc-ctrl-tab-background-horizontal-active: #292929;
+--mai-smtc-background-ctrl-on-image-hover: #3d3d3d;
+--mai-smtc-background-ctrl-on-image-pressed: #3d3d3d;
+--mai-smtc-background-ctrl-on-image-rest: #3d3d3d;
+--mai-smtc-background-flyout-saturation-blend: #292929;
+--mai-smtc-shadow-ctrl-brand-key: 0px 0px 0px 0px #ffffff00;
+--mai-smtc-shadow-ctrl-neutral-contour: 0px 0px 0px 0px #ffffff00;
+--mai-smtc-shadow-ctrl-neutral-inner-shine: 0px 0px 0px 0px #ffffff00;
+--mai-smtc-shadow-ctrl-neutral-key: 0px 0px 0px 0px #00000000;
+--mai-smtc-shadow-flyout-contour: 0px 0px 0px 0px #ffffff00;
+--smtc-background-card-on-primary-alt-hover: #243966;
+--smtc-background-card-on-primary-alt-pressed: #151b29;
+--smtc-background-card-on-primary-alt-rest: #243966;
+--smtc-background-card-on-primary-default-rest: #333333;
+--smtc-background-ctrl-active-brand-disabled: #00000080;
+--smtc-background-ctrl-active-brand-hover: #2169eb;
+--smtc-background-ctrl-active-brand-rest: #235ccf;
+--smtc-background-ctrl-brand-disabled: #00000080;
+--smtc-background-ctrl-brand-hover: #2169eb;
+--smtc-background-ctrl-brand-rest: #235ccf;
+--smtc-background-ctrl-neutral-disabled: #00000080;
+--smtc-background-ctrl-neutral-hover: #ffffff1a;
+--smtc-background-ctrl-neutral-pressed: #ffffff0f;
+--smtc-background-ctrl-neutral-rest: #29292980;
+--smtc-background-ctrl-outline-disabled: #ffffff00;
+--smtc-background-ctrl-outline-hover: #ffffff00;
+--smtc-background-ctrl-outline-pressed: #ffffff00;
+--smtc-background-ctrl-outline-rest: #ffffff00;
+--smtc-background-ctrl-shape-safe-neutral-hover: #ffffffad;
+--smtc-background-ctrl-shape-safe-neutral-pressed: #ffffffad;
+--smtc-background-ctrl-shape-safe-neutral-rest: #ffffffad;
+--smtc-background-ctrl-subtle-disabled: #ffffff00;
+--smtc-background-ctrl-subtle-hover: #ffffff1f;
+--smtc-background-ctrl-subtle-hover-split: #ffffff00;
+--smtc-background-ctrl-subtle-pressed: #ffffff14;
+--smtc-background-ctrl-subtle-rest: #00000000;
+--smtc-background-ctrl-subtle-selected-disabled: #ffffff00;
+--smtc-background-ctrl-subtle-selected-hover: #ffffff1f;
+--smtc-background-ctrl-subtle-selected-pressed: #ffffff14;
+--smtc-background-ctrl-subtle-selected-rest: #ffffff14;
+--smtc-background-flyout-solid: #292929;
+--smtc-background-layer-primary-solid: #292929;
+--smtc-background-toolbar: #333333;
+--smtc-background-window-primary-solid: #292929;
+--smtc-ctrl-choice-base-background-disabled: #ffffff00;
+--smtc-ctrl-choice-base-background-rest: #ffffff00;
+--smtc-ctrl-choice-base-stroke-disabled: #ffffff1f;
+--smtc-ctrl-choice-base-stroke-hover: #ffffff5c;
+--smtc-ctrl-choice-base-stroke-pressed: #ffffff52;
+--smtc-ctrl-choice-base-stroke-rest: #ffffff47;
+--smtc-ctrl-focus-inner-stroke: #000000;
+--smtc-ctrl-focus-outer-stroke: #ffffff;
+--smtc-ctrl-link-foreground-brand-hover: #c4dcff;
+--smtc-ctrl-link-foreground-brand-pressed: #69a1fa;
+--smtc-ctrl-link-foreground-brand-rest: #a7c9fc;
+--smtc-ctrl-link-foreground-neutral-hover: #ffffff;
+--smtc-ctrl-link-foreground-neutral-pressed: #ffffff;
+--smtc-ctrl-link-foreground-neutral-rest: #ffffff;
+--smtc-ctrl-progress-background-empty: #00000080;
+--smtc-ctrl-slider-bar-foreground-empty-disabled: #00000080;
+--smtc-ctrl-slider-bar-foreground-empty-rest: #adadad;
+--smtc-ctrl-slider-bar-foreground-filled-disabled: #00000080;
+--smtc-ctrl-slider-bar-foreground-filled-hover: #2169eb;
+--smtc-ctrl-slider-bar-foreground-filled-rest: #235ccf;
+--smtc-ctrl-slider-thumb-background-disabled: #b8b8b880;
+--smtc-ctrl-slider-thumb-background-hover: #2169eb;
+--smtc-ctrl-slider-thumb-background-rest: #235ccf;
+--smtc-ctrl-slider-thumb-inner-stroke-disabled: #29292980;
+--smtc-ctrl-slider-thumb-inner-stroke-hover: #29292980;
+--smtc-ctrl-slider-thumb-inner-stroke-pressed: #29292980;
+--smtc-ctrl-slider-thumb-inner-stroke-rest: #29292980;
+--smtc-ctrl-slider-thumb-outer-stroke-rest: #ffffff47;
+--smtc-ctrl-tooltip-shadow-ambient: 0px 0px 2px 0px #0000003d;
+--smtc-ctrl-tooltip-shadow-key: 0px 4px 8px 0px #00000047;
+--smtc-foreground-content-neutral-primary: #ffffff;
+--smtc-foreground-content-neutral-secondary: #ffffff85;
+--smtc-foreground-ctrl-active-brand-disabled: #b8b8b880;
+--smtc-foreground-ctrl-active-brand-hover: #ffffff;
+--smtc-foreground-ctrl-active-brand-pressed: #ffffff;
+--smtc-foreground-ctrl-active-brand-rest: #ffffff;
+--smtc-foreground-ctrl-brand-disabled: #b8b8b880;
+--smtc-foreground-ctrl-brand-hover: #c4dcff;
+--smtc-foreground-ctrl-brand-pressed: #69a1fa;
+--smtc-foreground-ctrl-brand-rest: #a7c9fc;
+--smtc-foreground-ctrl-hint-default: #ffffff85;
+--smtc-foreground-ctrl-icon-on-subtle-disabled: #b8b8b880;
+--smtc-foreground-ctrl-icon-on-subtle-hover: #ffffff;
+--smtc-foreground-ctrl-icon-on-subtle-pressed: #ffffff;
+--smtc-foreground-ctrl-icon-on-subtle-rest: #ffffff;
+--smtc-foreground-ctrl-neutral-primary-disabled: #b8b8b880;
+--smtc-foreground-ctrl-neutral-primary-hover: #ffffff;
+--smtc-foreground-ctrl-neutral-primary-pressed: #ffffff;
+--smtc-foreground-ctrl-neutral-primary-rest: #ffffff;
+--smtc-foreground-ctrl-neutral-secondary-disabled: #b8b8b880;
+--smtc-foreground-ctrl-neutral-secondary-rest: #ffffff85;
+--smtc-foreground-ctrl-on-active-brand-disabled: #ffffff3d;
+--smtc-foreground-ctrl-on-brand-disabled: #b8b8b880;
+--smtc-foreground-ctrl-on-outline-disabled: #b8b8b880;
+--smtc-foreground-ctrl-on-outline-hover: #ffffff;
+--smtc-foreground-ctrl-on-outline-pressed: #ffffff;
+--smtc-foreground-ctrl-on-outline-rest: #ffffff;
+--smtc-foreground-ctrl-on-subtle-disabled: #b8b8b880;
+--smtc-foreground-ctrl-on-subtle-hover: #ffffff;
+--smtc-foreground-ctrl-on-subtle-pressed: #ffffff;
+--smtc-foreground-ctrl-on-subtle-rest: #ffffff;
+--smtc-foreground-ctrl-on-transparent-rest: #ffffff;
+--smtc-material-acrylic-default-solid: #292929;
+--smtc-null-color: #ffffff00;
+--smtc-shadow-flyout-ambient: 0px 14px 28px 0px #0000003d;
+--smtc-shadow-flyout-key: 0px 0px 8px 0px #00000047;
+--smtc-status-danger-tint-foreground: #dc626d;
+--smtc-stroke-ctrl-on-active-brand-disabled: #ffffff00;
+--smtc-stroke-ctrl-on-active-brand-hover: #ffffff00;
+--smtc-stroke-ctrl-on-active-brand-pressed: #ffffff00;
+--smtc-stroke-ctrl-on-active-brand-rest: #ffffff00;
+--smtc-stroke-ctrl-on-brand-disabled: #ffffff00;
+--smtc-stroke-ctrl-on-brand-hover: #ffffff00;
+--smtc-stroke-ctrl-on-brand-pressed: #ffffff00;
+--smtc-stroke-ctrl-on-brand-rest: #ffffff00;
+--smtc-stroke-ctrl-on-neutral-rest: #ffffff47;
+--smtc-stroke-ctrl-on-outline-disabled: #ffffff1f;
+--smtc-stroke-ctrl-on-outline-hover: #ffffff5c;
+--smtc-stroke-ctrl-on-outline-pressed: #ffffff52;
+--smtc-stroke-ctrl-on-outline-rest: #ffffff47;
+--smtc-stroke-ctrl-on-subtle-disabled: #ffffff00;
+--smtc-stroke-ctrl-on-subtle-hover: #ffffff00;
+--smtc-stroke-ctrl-on-subtle-pressed: #ffffff00;
+--smtc-stroke-ctrl-on-subtle-rest: #ffffff00;
+--smtc-stroke-divider-default: #ffffff33;
+--smtc-stroke-divider-strong: #ffffff5c;
+--smtc-stroke-divider-subtle: #ffffff1a;
+--smtc-stroke-flyout: #ffffff00;
+      }
+    }
 
-skaityti,
+    @media (forced-colors: active) {
+      :root {
+        --colorBackgroundApp: Canvas;
+        
+      }
+    }
 
-cituoti,
+    body {
+      margin: 0;
+      font-family: "system-ui", sans-serif;
+      background-color: var(--colorBackgroundApp);
+    }
+    </style>
+    <title id="title">Reading mode</title>
+    <base id="content_base" target="_top">
+  </head>
 
-naudoti nekomerciniais tikslais,
-
-remtis struktūra tyrimuose ar analizėse,
-jei aiškiai nurodoma autorystė.
-
-Draudžiama
-
-keisti,
-
-platinti modifikuotas versijas,
-
-naudoti komerciniais tikslais,
-
-kurti išvestinius kūrinius,
-be raštiško Renato Vaičiūno Antano leidimo.
-
-Teisių išlaikymas  
-Visos teisės, kurios nėra aiškiai suteiktos šioje licencijoje, yra pasiliekamos autoriui.
-
-Institucinis naudojimas  
-SSA dokumentai gali būti naudojami institucijose tik su aiškia autorystės nuoroda ir be turinio keitimo.
-
-Jurisdikcija  
-Licencija taikoma pagal Jungtinės Karalystės teisę.
+  <body>
+    <!-- the class name notranslate has to be in sync with MsNoTranslateClass variable from /src/scripts/TranslatorConstants.ts -->
+    <div class="notranslate noPrint" id="reading-bar-container"></div>
+    <div class="notranslate" id="modal-root"></div>
+    <div id="full_page_progress_container" class="contentBody">
+      <!-- <progress class="progress_pages_pending full_page_progress_indicator" /> -->
+    </div>
+    <script type="module" src="./index.js"></script>
+    <div
+      class="__reading__mode__screen_reader_only"
+      id="__reading__mode__screen_reader_info"
+      aria-live="assertive"
+      aria-atomic="true"
+      hidden
+    >
+    </div>
+    <!-- Main container containing extracted content -->
+    <div id="main_container" class="regionScrollContainer noPrint">
+      <div id="__reading__mode__toc__root__container__id"></div>
+      <div class="multicolview noPrint" id="regionContainer"></div>
+    </div>
+    <div id="print_container" class="forPrint"></div>
+    
+  </body>
+</html>
