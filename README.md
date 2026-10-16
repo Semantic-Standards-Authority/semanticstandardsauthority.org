@@ -42,8 +42,7 @@ All governance actions are documented and published.
 
 All SSA documents are available at:
 
-**https://semanticstandards.uk**
-
+**https://www.semanticstandardsauthority.org
 This repository mirrors the authoritative public versions.
 
 ---
